@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Dashboard - Giga SEA LMS</title>
+  <link href="/css/style.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <style>
+    body {
+      background-color: #f0f4f8; /* Lighter background for a clean look */
+      font-family: 'Arial', sans-serif;
+      color: #333; /* Dark text for better readability */
+    }
+    .card {
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+    .navbar {
+      background-color: #007bff; /* Blue navbar */
+    }
+    .navbar .navbar-brand, .navbar-nav .nav-link {
+      color: white !important;
+    }
+    .navbar .navbar-brand:hover, .navbar-nav .nav-link:hover {
+      color: #ffcc00 !important;
+    }
+    footer {
+      background-color: #007bff; /* Blue footer */
+      color: white;
+      padding: 20px 0;
+      font-size: 14px;
+    }
+    footer a {
+      color: #ffcc00;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 1200px;
+    }
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #007bff;
+    }
+    .card-text {
+      font-size: 1.1rem;
+      color: #555;
+    }
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .btn {
+      font-size: 1rem;
+      padding: 10px 20px;
+      border-radius: 50px;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+    .btn-primary { background-color: #0056b3; }
+    .btn-secondary { background-color: #6c757d; }
+    .btn-success { background-color: #28a745; }
+    .btn-warning { background-color: #ffc107; }
+    .btn-danger { background-color: #dc3545; }
+    .btn-info { background-color: #17a2b8; }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .card-col {
+      max-width: 300px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Global Navbar -->
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Giga SEA LMS</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" th:href="@{/dashboard}">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/students}">Students</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/courses}">Courses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/attendance}">Attendance</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/results}">Results</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/mcq-test}">MCQ Test</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/training-feedback}">Feedback</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Main Content -->
+<main>
+  <div class="container mt-5">
+    <h1 class="text-center mb-5" style="color: #007bff;">Dashboard</h1>
+    <div class="card-container">
+      <div class="card-col">
+        <div class="card text-center p-4">
+          <div class="card-body">
+            <h5 class="card-title">Students</h5>
+            <p class="card-text">View and manage student records.</p>
+            <a th:href="@{/students}" class="btn btn-primary">Go to Students</a>
+          </div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="card text-center p-4">
+          <div class="card-body">
+            <h5 class="card-title">Courses</h5>
+            <p class="card-text">View and manage courses offered.</p>
+            <a th:href="@{/courses}" class="btn btn-secondary">Go to Courses</a>
+          </div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="card text-center p-4">
+          <div class="card-body">
+            <h5 class="card-title">Attendance</h5>
+            <p class="card-text">Track and manage attendance records.</p>
+            <a th:href="@{/attendance}" class="btn btn-success">Go to Attendance</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-container mt-4">
+      <div class="card-col">
+        <div class="card text-center p-4">
+          <div class="card-body">
+            <h5 class="card-title">Result</h5>
+            <p class="card-text">View and manage test results.</p>
+            <a th:href="@{/results}" class="btn btn-warning">Go to Result</a>
+          </div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="card text-center p-4">
+          <div class="card-body">
+            <h5 class="card-title">MCQ Test</h5>
+            <p class="card-text">Prepare and manage MCQ tests.</p>
+            <a th:href="@{/mcq-test}" class="btn btn-danger">Go to MCQ Test</a>
+          </div>
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="card text-center p-4">
+          <div class="card-body">
+            <h5 class="card-title">Feedback</h5>
+            <p class="card-text">Submit a feedback.</p>
+            <a th:href="@{/training-feedback}" class="btn btn-info">Go to Feedback</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="container text-center">
+    <p>&copy; 2024 Giga SEA LMS | <a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a></p>
+  </div>
+</footer>
+
+<!-- Bootstrap JS (Required for Collapse and Navbar Toggle) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFyZLcb8iZ9nkE2i6nKG9PONC3eQv/EjhlnuFXoBsMZ9SN00ABzvKvoW09" crossorigin="anonymous"></script>
+</body>
+</html>

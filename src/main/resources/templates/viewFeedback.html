@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Feedbacks</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Course Feedback Submissions</h1>
+
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Courses</th>
+      <th>Feedback</th>
+      <th>Report File</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="feedback : ${feedbacks}">
+      <td th:text="${feedback.id}"></td>
+      <td th:text="${feedback.name}"></td>
+      <td th:text="${feedback.email}"></td>
+      <td th:text="${feedback.session}"></td>
+      <td th:text="${feedback.feedbackText}"></td>
+      <td>
+        <a th:href="@{/download-report/{fileName}(fileName=${feedback.reportFileName})}"
+           class="btn btn-sm btn-primary" target="_blank">
+          Download Report
+        </a>
+      </td>
+      <td>
+        <form action="/delete-feedback" method="post" style="display:inline;">
+          <input type="hidden" name="id" th:value="${feedback.id}">
+          <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this feedback?');">
+            Delete
+          </button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <a href="/" class="btn btn-primary">Back to Dashboard</a>
+</div>
+
+<footer class="mt-5 bg-dark text-white text-center py-3">
+  <p>&copy; 2024 Gigasea All Rights Reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

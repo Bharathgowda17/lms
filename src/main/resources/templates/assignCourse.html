@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Assign Course to Student</title>
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Giga SEA LMS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href="@{/dashboard}">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/students}">Students</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/courses}">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/attendance}">Attendance</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/results}">Results</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/mcq-test}">MCQ Test</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="container mt-5">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Assign Course to Student</h2>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/addCourseToStudent}" method="POST">
+                        <div class="form-group mb-3">
+                            <label for="studentId">Student ID:</label>
+                            <input type="number" class="form-control" id="studentId" name="studentId" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="courseId">Course:</label>
+                            <select class="form-control" id="courseId" name="courseId" required>
+                                <option th:each="course : ${courses}" th:value="${course.id}" th:text="${course.name}"></option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Assign</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="mt-5 text-center">
+    <p>&copy; 2024 Giga SEA LMS | Terms of Service | Privacy Policy</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFyZLcb8iZ9nkE2i6nKG9PONC3eQv/EjhlnuFXoBsMZ9SN00ABzvKvoW09" crossorigin="anonymous"></script>
+</body>
+</html>
